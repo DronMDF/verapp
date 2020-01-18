@@ -5,6 +5,6 @@
 
 # Links
 
-[vera++ homepage](https://bitbucket.org/verateam/vera/wiki/Home)
-[trikRuntime rules](https://github.com/trikset/trikRuntime/tree/master/vera%2B%2B/scripts/rules)
+- [vera++ homepage](https://bitbucket.org/verateam/vera/wiki/Home)
+- [trikRuntime rules](https://github.com/trikset/trikRuntime/tree/master/vera%2B%2B/scripts/rules)
 
