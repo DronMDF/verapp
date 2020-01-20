@@ -18,8 +18,11 @@ foreach f [getSourceFileNames] {
 		set token [lindex $t 3]
 		if {$state == "global" && $token == "class"} {
 			set state "class"
+			set className "unknown"
 		} elseif {$state == "class" && $token == "identifier"} {
-			set className [lindex $t 0]
+			if {$className == "unknown"} {
+				set className [lindex $t 0]
+			}
 		} elseif {$state == "class" && $token == "leftbrace"} {
 			set state "inclass"
 			set level 0
