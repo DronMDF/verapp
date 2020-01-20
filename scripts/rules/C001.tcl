@@ -1,7 +1,7 @@
 #!/usr/bin/tclsh
 # Number of methods per class
 
-set methodsPerClass [getParameter "method-per-class" 3]
+set methodsPerClass [getParameter "method-per-class" 10]
 
 set vtype {
 	public
@@ -28,6 +28,8 @@ foreach f [getSourceFileNames] {
 			set method "ctor"
 		} elseif {$state == "inclass" && $token == "semicolon"} {
 			set method "regular"
+		} elseif {$state == "inclass" && $token == "leftbrace"} {
+			incr level
 		} elseif {$state == "inclass" && $token == "leftparen"} {
 			set state "args"
 			set alevel 0
@@ -51,7 +53,7 @@ foreach f [getSourceFileNames] {
 					report $f $lineNumber "Class '$className' have $methods public method ($methodsPerClass max)."
 				}
 			} else {
-				decr level
+				incr level -1
 			}
 		} elseif {$state == "class" && $token == "semicolon"} {
 			set state "global"
